@@ -21,6 +21,7 @@ export default class NewBill {
   handleChangeFile = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
+    //BUG
     // Ajout verification fichier jpg jpeg ou png si fals return msg erreur
     if (file) {
       const extension = file.name.split(".").pop().toLowerCase();

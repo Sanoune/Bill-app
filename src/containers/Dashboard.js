@@ -95,6 +95,8 @@ export default class {
   };
 
   handleEditTicket(e, bill, bills) {
+    //appel deux fois la fonction openbill
+    console.log(bill, bills);
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0;
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id;
     if (this.counter % 2 === 0) {
@@ -156,6 +158,7 @@ export default class {
     }
 
     bills.forEach((bill) => {
+      //modification supp click avant de le remettre
       $(`#open-bill${bill.id}`).off("click");
       $(`#open-bill${bill.id}`).click((e) =>
         this.handleEditTicket(e, bill, bills)

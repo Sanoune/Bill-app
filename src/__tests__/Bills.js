@@ -35,8 +35,11 @@ describe("Given I am connected as an employee", () => {
       window.onNavigate(ROUTES_PATH.Bills);
       await waitFor(() => screen.getByTestId("icon-window"));
       const windowIcon = screen.getByTestId("icon-window");
+      const activeIcon = windowIcon.classList.contains("active-icon");
       // Vérification que l'icône de fenêtre est présente
       expect(windowIcon).toBeTruthy();
+      // verification que l'icône contient bien la classe active icon
+      expect(activeIcon).toBe(true);
     });
 
     // Then: les factures doivent être triées de la plus ancienne à la plus récente
@@ -52,7 +55,7 @@ describe("Given I am connected as an employee", () => {
       expect(dates).toEqual(datesSorted);
     });
 
-    // Then: lorsque je clique sur le bouton Nouvelle facture, le formulaire de nouvelle facture doit s'ouvrir
+    //TEST 1 Then: lorsque je clique sur le bouton Nouvelle facture, le formulaire de nouvelle facture doit s'ouvrir
     test("Then when i click on the new bill button it should open new bill form", async () => {
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,
@@ -81,7 +84,7 @@ describe("Given I am connected as an employee", () => {
       expect(spy).toHaveBeenCalledWith(ROUTES_PATH["NewBill"]);
     });
 
-    // Then: lorsque je clique sur l'icône de l'œil, la facture doit s'ouvrir
+    //Test 2 Then: lorsque je clique sur l'icône de l'œil, la facture doit s'ouvrir
     test("Then when i click on the icon eye it should open bill", async () => {
       Object.defineProperty(window, "localStorage", {
         value: localStorageMock,

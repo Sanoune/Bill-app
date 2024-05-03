@@ -24,7 +24,6 @@ const rows = (data) => {
   return data && data.length
     ? data
         // Si des données sont disponibles, les trie par date dans l'ordre décroissant
-
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .map((bill) => row(bill))
         .join("")
